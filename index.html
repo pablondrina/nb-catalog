@@ -16,9 +16,15 @@
     <!-- Pinterest -->
     <meta name="p:domain_verify" content="90531536e1551847c482077d10bc9c4d" />
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
     <!-- Tailwind.css -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
     <!-- Alpine.js -->
     <!-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script> -->
     <script defer src="js/alpine-3-12-0.js"></script>
@@ -36,7 +42,7 @@
 </head>
 
 
-<body x-data="catalog()" class="font-[Inter] text-lg text-stone-700">
+<body x-data="catalog()" class="font-[Lora] text-lg text-stone-700 bg-amber-50  ">
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -45,10 +51,10 @@
     <!-- Cabeçalho do CATÁLOGO -->
     <template x-if="!basketView">
         <header
-            class="top-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-white p-4 drop-shadow-md">
-            <div class="grid justify-self-start">
+            class="top-0 z-10 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-amber-50 p-4 drop-shadow-md">
+            <div class="grid justify-self-start px-1">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                    width="50" height="50" viewBox="0 0 50 50" xml:space="preserve">
+                    width="50" height="50" viewBox="0 0 50 50" xml:space="preserve" class="w-10 h-10">
                     <desc>Created with Fabric.js 3.5.0</desc>
                     <defs>
                     </defs>
@@ -63,11 +69,23 @@
                 </svg>
             </div>
             <div class="grid justify-self-center col-span-3">
-                <h1 class="text-2xl"><strong>Catálogo</strong></h1>
+                <h1 class="text-2xl"><strong>MENU NELSON</strong></h1>
             </div>
-            <div class="grid justify-self-end">
+            <div class="grid justify-self-end px-1">
                 <button @click="switchView">
-                    <p class="leading-none">Sacola (<span x-text="basketItemQuantity()">0</span>)</p>
+                    <div class="relative py-2">
+                        <template x-if="basketItemQuantity()">
+                            <div class="top-1 absolute left-5">
+                                <span x-text="basketItemQuantity()"
+                                    class="flex h-2 w-2 items-center justify-center rounded-full p-3 bg-rose-700 text-rose-50 text-sm font-bold font-[Inter]">0</span>
+                            </div>
+                        </template>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                    </div>
                 </button>
 
             </div>
@@ -78,7 +96,7 @@
     <!-- Cabeçalho da SACOLA -->
     <template x-if="basketView">
         <header
-            class="top-0 fixed h-16 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-white p-4 drop-shadow-md">
+            class="top-0 fixed h-16 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-amber-50 p-4 drop-shadow-md">
             <div class="grid justify-self-start">
                 <button @click="switchView">
                     <p class="leading-none">Fechar</p>
@@ -103,31 +121,36 @@
 
             <section id="catalog" class="pt-2">
                 <template x-for="product in products" :key="product.cod">
-                    <div class="flex gap-3 px-4 sm:px-2 sm:rounded-xl py-2 hover:bg-stone-100">
-                        <div class="flex-none w-24">
-                            <img x-bind:src="product.image" alt="Imagem do produto"
-                                class="inline-block h-24 w-24 rounded-lg"
-                                onerror="this.src='https://placehold.co/50?text=:)&font=lora';">
+                    <div class="flex gap-3 px-4 sm:px-2 sm:rounded-xl py-2 hover:bg-amber-100">
+                        <div
+                            class="flex-none drop-shadow-lg place-self-center transform hover:-rotate-2 -translate-y-1/6">
+                            <div class="vintage-photo-container ">
+                                <div
+                                    class="border-white border-8 ring-8 ring-white ring-inset outline-8 outline-white outline-offset-2">
+                                    <img x-bind:src="product.image" alt="Imagem do produto"
+                                        class="inline-block h-24 w-24"
+                                        onerror="this.src='https://placehold.co/50?text=:)&font=lora';">
+                                </div>
+                            </div>
                         </div>
-                        <div class="grow w-2/3 justify-between flex flex-col py-1">
+                        <div class="grow w-1/2 justify-between flex flex-col py-1">
 
                             <div class="w-full">
                                 <p x-text="product.name" class="truncate leading-tight font-semibold">Nome do produto
                                 </p>
-                                <p x-text="product.description" class="text-clip leading-none text-sm">Descrição do
+                                <p x-text="product.description" class="truncate leading-none text-sm py-1">Descrição do
                                     produto</p>
                             </div>
 
                             <div class="h-8 flex flex-row items-center justify-between pb-1">
-                                    <p class="leading-none font-light">R$ <span
-                                            x-text="product.price.toFixed(2)"></span>
-                                    </p>
+                                <p class="leading-none font-light">R$ <span x-text="product.price.toFixed(2)"></span>
+                                </p>
                                 <div class="flex flex-row items-center">
                                     <button @click="decrementQuantity(product)" x-show="product.quantity"
-                                        class="text-3xl font-light bg-stone-200 hover:bg-stone-400 hover:text-black rounded-full h-10 w-10 pb-1">&minus;</button>
+                                        class="text-3xl font-light bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&minus;</button>
                                     <p x-show="product.quantity" x-text="product.quantity" class="p-3">9</p>
                                     <button @click="incrementQuantity(product)"
-                                        class="text-3xl font-light bg-stone-200 hover:bg-stone-400 hover:text-black rounded-full h-10 w-10 pb-1">&plus;</button>
+                                        class="text-3xl font-light bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&plus;</button>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +169,7 @@
             <section id="basket" class="h-3/4">
 
                 <template x-if="!basketItemQuantity()">
-                    <div class="h-3/4">
+                    <div class="h-1/2">
                         <div class="container-fluid pt-24 p-8 items-center text-center">
                             <div class="flex place-content-center py-4 text-stone-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
@@ -166,10 +189,10 @@
                         </div>
 
                         <footer
-                            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-white p-4 drop-shadow-2xl">
+                            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-amber-50 p-4 drop-shadow-2xl">
                             <div class="container m-auto grid justify-self-center col-span-5 w-full">
                                 <button @click="switchView"
-                                    class="bg-stone-200 hover:bg-stone-300 hover:text-black rounded-lg p-2 w-full">
+                                    class="bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-lg p-2 w-full">
                                     Ver catálogo
                                 </button>
                             </div>
@@ -182,14 +205,15 @@
                 <template x-if="basketItemQuantity()">
                     <div class="flex flex-row justify-between items-center p-4">
                         <h2 class="text-2xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
-                        <button @click="switchView">
-                            <p class="leading-none">Continuar comprando</p>
+                        <button @click="switchView"
+                            class="bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-full py-2 px-4">
+                            <p class="leading-tight">Continuar comprando</p>
                         </button>
                     </div>
                 </template>
 
                 <template x-for="item in basket" :key="item.product.cod">
-                    <div class="flex gap-3 px-4 sm:px-2 sm:rounded-xl py-2 hover:bg-stone-100">
+                    <div class="flex gap-3 px-4 sm:px-2 sm:rounded-xl py-2 hover:bg-amber-100">
                         <div class="flex-none w-24">
                             <img x-bind:src="item.product.image" alt="Imagem do produto"
                                 class="inline-block h-24 w-24 rounded-lg"
@@ -204,13 +228,14 @@
 
                             </div>
                             <div class="flex flex-row justify-between items-center">
+
                                 <div class="h-8 flex flex-row items-center">
                                     <button @click="decrementQuantity(item.product)"
                                         x-bind:disabled="item.product.quantity === 0"
-                                        class="text-3xl font-light bg-stone-200 hover:bg-stone-400 hover:text-black rounded-full h-10 w-10 pb-1">&minus;</button>
+                                        class="text-3xl font-light bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&minus;</button>
                                     <p x-text="item.product.quantity" class="p-3">9</p>
                                     <button @click="incrementQuantity(item.product)"
-                                        class="text-3xl font-light bg-stone-200 hover:bg-stone-400 hover:text-black rounded-full h-10 w-10 pb-1">&plus;</button>
+                                        class="text-3xl font-light bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&plus;</button>
                                 </div>
 
                                 <div class="h-8 flex flex-row items-center justify-end pb-1">
@@ -232,10 +257,10 @@
     <!-- Rodapé do CATÁLOGO, com botão VER SACOLA -->
     <template x-if="!basketView && basketItemQuantity()">
         <footer
-            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-white p-4 drop-shadow-2xl">
+            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-amber-50 p-4 drop-shadow-2xl">
             <div class="container m-auto grid justify-self-center col-span-5 w-full">
                 <button @click="switchView"
-                    class="bg-stone-200 hover:bg-stone-300 hover:text-black rounded-lg p-2 w-full">
+                    class="bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-lg p-2 w-full">
                     Ver sacola
                 </button>
             </div>
@@ -246,7 +271,7 @@
     <!-- Rodapé da SACOLA, com subtotal e botão ENVIAR PEDIDO -->
     <template x-if="basketView && basketItemQuantity()">
         <footer
-            class="bottom-0 fixed h-auto w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-white p-4 drop-shadow-2xl">
+            class="bottom-0 fixed h-auto w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-amber-50 p-4 drop-shadow-2xl">
             <div class="grid justify-self-center text-center col-span-5 w-full">
                 <div class="pb-4">
                     <div class="flex flex-row justify-between items-center py-2">
@@ -259,7 +284,8 @@
                         possíveis taxas e descontos.</p>
                 </div>
                 <a role="button" x-bind:href="generateWhatsappMessageLink(basket)"
-                    class="bg-emerald-600 hover:bg-emerald-800 text-white rounded-lg p-2 w-full">Enviar por WhatsApp</a>
+                    class="bg-emerald-600 text-white hover:bg-stone-300 hover:text-stone-900 rounded-lg p-2 w-full">Enviar
+                    por WhatsApp</a>
             </div>
         </footer>
     </template>

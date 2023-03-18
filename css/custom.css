@@ -1,0 +1,11 @@
+.vintage-photo-container {
+  --mask:
+    linear-gradient(#000 0 0) 50%/calc(100% - 0.93rem) calc(100% - 0.93rem) no-repeat,
+    radial-gradient(farthest-side, #000 98%, #0000) 0 0/1rem 1rem round;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+.vintage-photo-frame {
+  @apply border-white border-8 ring-8 ring-white ring-inset outline-8 outline-white outline-offset-2
+}
