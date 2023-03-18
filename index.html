@@ -124,7 +124,7 @@
                 </button>
             </div>
             <div class="grid justify-self-center col-span-3">
-                <h1 class="text-2xl"><strong>Sua sacola</strong></h1>
+                <h1 class="text-2xl"><strong>Sacola vazia</strong></h1>
             </div>
             <div class="grid justify-self-end">
             </div>
@@ -187,7 +187,7 @@
     <!-- Conteúdo da SACOLA -->
     <template x-if="basketView">
         <main class="py-24">
-            <section id="basket" class="h-full">
+            <section id="basket" class="h-screen">
 
                 <template x-if="!basketItemQuantity()">
                     <div class="h-1/2">
@@ -392,7 +392,9 @@
                     recipientNumber = '554333231997';
                     whatsAppPrefix = 'https://wa.me/' + recipientNumber + '?text=';
                     messageLink = whatsAppPrefix + encodedMessage;
-                    console.log(messageLink);
+
+                    // Limpa a sacola de compras:
+                    this.basket = [];
 
                     // Retorna o link completo do WhatsApp com a mensagem codificada
                     return messageLink;
