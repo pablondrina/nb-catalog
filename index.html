@@ -97,7 +97,8 @@
 
 
     <template x-if="basketView && basketItemQuantity()">
-        <header class="top-0 fixed h-20 w-full flex flex-row justify-between items-center p-4 bg-amber-50 drop-shadow-md">
+        <header
+            class="top-0 fixed h-20 w-full flex flex-row justify-between items-center p-4 bg-amber-50 drop-shadow-md">
             <h2 class="text-2xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
             <button @click="switchView"
                 class="bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-full py-2 px-4">
@@ -304,33 +305,60 @@
         function catalog() {
             return {
                 products: [
-                    { cod: 'bax', image: "img/products/bax.jpg", name: 'Italiano Rústico', description: 'Pão tradicional, só farinha, água e sal', price: 15.00, quantity: 0 },
-                    { cod: 'fe', image: "img/products/fe.jpg", name: 'Fendu', description: 'Pãozinho francês com farinha orgânica e fermentação 100% natural', price: 3.50, quantity: 0 },
-                    { cod: 'ph', image: "img/products/ph.jpg", name: 'Pão de Hambúrguer Rústico', description: '', price: 3.50, quantity: 0 },
-                    { cod: 'ba', image: "img/products/ba.jpg", name: 'Bâtard', description: '', price: 9.00, quantity: 0 },
-                    { cod: 'foa', image: "img/products/foa.jpg", name: 'Focaccia Alecrim & Sal grosso', description: '', price: 25.00, quantity: 0 },
-                    { cod: 'foc', image: "img/products/foc.jpg", name: 'Focaccia Cebola roxa & Azeitonas pretas', description: '', price: 29.00, quantity: 0 },
-                    { cod: 'cbt', image: "img/products/cbt.jpg", name: 'Focaccia Bacon, Cebola & Tomilho', description: '', price: 32.00, quantity: 0 },
-                    { cod: 'ci', image: "img/products/ci.jpg", name: 'Ciabatta', description: '', price: 10.00, quantity: 0 },
-                    { cod: 'be', image: "img/products/be.jpg", name: 'Baguete Gergelim', description: '', price: 11.00, quantity: 0 },
-                    { cod: 'cg', image: "img/products/cg.jpg", name: 'Pain de Campagne', description: '', price: 13.00, quantity: 0 },
-                    { cod: 'cf', image: "img/products/cf.jpg", name: 'Baguette de Campagne', description: '', price: 12.00, quantity: 0 },
-                    { cod: 'cca', image: "img/products/cca.jpg", name: 'Cornet Caramelo salgado', description: '', price: 8.00, quantity: 0 },
-                    { cod: 'coc', image: "img/products/coc.jpg", name: 'Cornet Chocolate', description: '', price: 8.00, quantity: 0 },
-                    { cod: 'co', image: "img/products/co.jpg", name: 'Cornet', description: '', price: 7.00, quantity: 0 },
-                    { cod: 'pr', image: "img/products/pr.jpg", name: 'Pain aux Raisins', description: '', price: 8.00, quantity: 0 },
-                    { cod: 'bch', image: "img/products/bch.jpg", name: 'Brioche Chocolat', description: '', price: 7.00, quantity: 0 },
-                    { cod: 'ct', image: "img/products/ct.jpg", name: 'Croissant Tradicional', description: 'Clássico em pura manteiga', price: 9.00, quantity: 0 },
-                    { cod: 'pc', image: "img/products/pc.jpg", name: 'Pain au Chocolat', description: '', price: 10.00, quantity: 0 },
-                    { cod: 'cm', image: "img/products/cm.jpg", name: 'Mini Croissant', description: '', price: 5.00, quantity: 0 },
-                    { cod: 'cn', image: "img/products/cn.jpg", name: 'Chausson aux Pommes', description: 'Folhado de maçã & canela', price: 12.00, quantity: 0 },
-                    { cod: 'ma', image: "img/products/ma.jpg", name: 'Maçã', description: 'Pão fofinho em formato de maçãcom recheio de creme', price: 10.00, quantity: 0 },
-                    { cod: 'an', image: "img/products/an.jpg", name: 'Ursinho ou Porquinho', description: 'Pão fofinho em formato de animalzinho, com recheio de creme', price: 11.00, quantity: 0 },
-                    { cod: 'dl', image: "img/products/dl.jpg", name: 'Deli', description: 'Milho & Bacon', price: 14.00, quantity: 0 },
-                    { cod: 'ho', image: "img/products/ho.jpg", name: 'Hot Dog', description: 'Salsicha viena artesanal', price: 12.00, quantity: 0 },
-                    { cod: 'jo', image: "img/products/jo.jpg", name: 'Caranguejo', description: '', price: 12.00, quantity: 0 },
+                    { cod: 'ma', image: "img/products/ma.jpg", name: 'Maçã', description: 'Pão fofinho em formato de maçã com recheio de creme', price: 10.00, quantity: 0 },
+                    { cod: 'an', image: "img/products/an.jpg", name: 'Ursinho ou Porquinho', description: 'Pão fofinho em formato de porquinho ou ursinho, com recheio de creme', price: 11.00, quantity: 0 },
+                    { cod: 'anc', image: "img/products/anc.jpg", name: 'Coelhinho de Chocolate', description: 'Pão amanteigado em formato de coelhinho, com recheio de creme de chocolate', price: 13.00, quantity: 0 },
+
+                    { cod: 'fa', image: "img/products/fa.jpg", name: 'Pão de Forma Artesanal', description: 'Super macio ao estilo japonês. Vem com 6 fatias grossas', price: 14.00, quantity: 0 },
                     { cod: 'ch', image: "img/products/ch.jpg", name: 'Challah', description: 'Trança fofinha e levemente adocicada, decorada com gergelim', price: 14.00, quantity: 0 },
-                    { cod: 'bn', image: "img/products/bn.jpg", name: 'Brioche Nanterre', description: 'Bem fofinho', price: 16.00, quantity: 0 },
+                    { cod: 'bn', image: "img/products/bn.jpg", name: 'Brioche Nanterre', description: 'Super leve e levemente adocicado', price: 16.00, quantity: 0 },
+                    { cod: 'pho', image: "img/products/pho.jpg", name: 'Pão para Hot Dog (pc 4un)', description: 'Pão amanteigado. Bom para cachorro quente.', price: 14.00, quantity: 0 },
+                    { cod: 'md', image: "img/products/md.jpg", name: 'Madeleine', description: 'Bolinho clássico francês, simples e delicioso', price: 3.50, quantity: 0 },
+
+                    { cod: 'ff', image: "img/products/ff.jpg", name: 'Folhado de Frango', description: 'Folhado com recheio de frango e milho', price: 15.00, quantity: 0 },
+                    { cod: 'dl', image: "img/products/dl.jpg", name: 'Deli', description: 'Pão amanteigado recheado com milho, bacon & queijo minas', price: 14.00, quantity: 0 },
+                    { cod: 'ho', image: "img/products/ho.jpg", name: 'Hot Dog', description: 'Pão amanteigado recheado com uma sabora salsicha viena artesanal', price: 12.00, quantity: 0 },
+                    { cod: 'jo', image: "img/products/jo.jpg", name: 'Caranguejo', description: 'Pão amanteigado em formato de caranguejo, com recheio de presunto e requeijão artesanais', price: 12.00, quantity: 0 },
+
+                    { cod: 'cpx', image: "img/products/cpx.jpg", name: 'Campagne Passas e Castanhas', description: 'Pão de fermentação natural (levain), trigo 50% integral e centeio orgânicos, passas, castanhas de caju e do Pará', price: 25.00, quantity: 0 },
+                    { cod: 'ci', image: "img/products/ci.jpg", name: 'Ciabatta', description: 'Pão aerado, um clássico italiano com azeite de oliva extra virgem, farinha orgânica e fermentação 100% natural (levain)', price: 10.00, quantity: 0 },
+                    { cod: 'foa', image: "img/products/foa.jpg", name: 'Focaccia Alecrim & Sal grosso', description: 'Nossa versão desse clássico italiano, com alecrim fresco, sal grosso e regado generosamente com azeite de oliva extra virgem', price: 25.00, quantity: 0 },
+                    { cod: 'foc', image: "img/products/foc.jpg", name: 'Focaccia Cebola roxa & Azeitonas pretas', description: 'Focaccia de cebola roxa, azeitonas pretas e regado generosamente com azeite de oliva extra virgem', price: 29.00, quantity: 0 },
+                    { cod: 'cbt', image: "img/products/cbt.jpg", name: 'Focaccia Bacon, Cebola & Tomilho', description: 'Focaccia de cebola, bacon, tomilho e cubos de queijo minas, regado generosamente com azeite de oliva extra virgem', price: 32.00, quantity: 0 },
+                    { cod: 'cgr', image: "img/products/cgr.jpg", name: 'Pain de Campagne Redondo', description: 'Pão de fermentação natural (levain), trigo 50% integral e centeio orgânicos', price: 13.00, quantity: 0 },
+                    { cod: 'bax', image: "img/products/bax.jpg", name: 'Italiano Rústico', description: 'Pão de tradicional com farinha 100% orgânica e fermentação 100% natural (levain) ', price: 15.00, quantity: 0 },
+                    { cod: 'cgo', image: "img/products/cgo.jpg", name: 'Pain de Campagne Oval', description: 'Pão de fermentação natural (levain), trigo 50% integral e centeio orgânicos', price: 13.00, quantity: 0 },
+                    { cod: 'ba', image: "img/products/ba.jpg", name: 'Bâtard', description: 'Pão de tradição francesa, 100% orgânica e fermentação 100% natural (levain) em formato de filão', price: 9.00, quantity: 0 },
+                    { cod: 'fe', image: "img/products/fe.jpg", name: 'Fendu', description: 'Pãozinho de tradição francesa, 100% orgânico e fermentação 100% natural (levain)', price: 3.50, quantity: 0 },
+                    { cod: 'tb', image: "img/products/tb.jpg", name: 'Tabatière', description: 'Pãozinho de tradição francesa, 100% orgânico e fermentação 100% natural (levain)', price: 3.50, quantity: 0 },
+                    { cod: 'ph', image: "img/products/ph.jpg", name: 'Pão de Hamburguer', description: 'Pão de tradição francesa, 100% orgânico e fermentação 100% natural (levain), bom para hamburguer', price: 3.50, quantity: 0 },
+                    { cod: 'bbb', image: "img/products/bbb.jpg", name: 'Brioche Burguer Bun (pc 2un)', description: 'Super leve, riquísimo em ovos e manteiga. Simples e delicioso', price: 9.00, quantity: 0 },
+
+                    { cod: 'bf', image: "img/products/bf.jpg", name: 'Baguete Francesa', description: 'Pão de tradição francesa, 100% orgânica e fermentação 100% natural (levain)', price: 9.00, quantity: 0 },
+                    { cod: 'cf', image: "img/products/cf.jpg", name: 'Baguette de Campagne', description: 'Baguete de fermentação natural (levain), trigo 50% integral e centeio orgânicos', price: 12.00, quantity: 0 },
+                    { cod: 'be', image: "img/products/be.jpg", name: 'Baguete Gergelim', description: 'Baguete tradicional com farinha orgânica, fermentação 100% natural (levain) com toque de azeite e gergelim', price: 11.00, quantity: 0 },
+                    { cod: 'bap', image: "img/products/bap.jpg", name: 'Mini Baguette', description: 'Mini Baguete tradicional com farinha orgânica, fermentação 100% natural (levain) com toque de azeite', price: 6.00, quantity: 0 },
+
+                    { cod: 'mif', image: "img/products/mif.jpg", name: 'Mini Focaccia de Alecrim & Sal grosso', description: 'Nossa versão desse clássico italiano, com alecrim fresco, sal grosso e regado generosamente com azeite de olva extra virgem', price: 10.00, quantity: 0 },
+                    { cod: 'mifoc', image: "img/products/mifoc.jpg", name: 'Mini Focaccia de Cebola Roxa & Azeitonas Pretas', description: 'Focaccia de cebola roxa, azeitonas pretas e regado generosamente com azeite de oliva extra virgem', price: 12.00, quantity: 0 },
+                    { cod: 'micbt', image: "img/products/micbt.jpg", name: 'Mini Focaccia Cebola, Bacon & Tomilho', description: 'Focaccia de cebola, bacon, tomilho e cubos de queijo minas, regado generosamente com azeite de oliva extra virgem', price: 14.00, quantity: 0 },
+
+                    { cod: 'cca', image: "img/products/cca.jpg", name: 'Cornet Caramelo salgado', description: 'Pão amanteigado em formato de cone, com recheio de caramelo', price: 8.00, quantity: 0 },
+                    { cod: 'coc', image: "img/products/coc.jpg", name: 'Cornet Chocolate', description: 'Pão amanteigado em formato de cone, com recheio de creme de chocolate', price: 8.00, quantity: 0 },
+                    { cod: 'co', image: "img/products/co.jpg", name: 'Cornet', description: 'Pão amanteigado com formato de cone, com recheio de creme', price: 7.00, quantity: 0 },
+
+                    { cod: 'me', image: "img/products/me.jpg", name: 'Melon Pan', description: 'Clássico japonês amanteigado com cobertura crocante e levemente doce. Simples e delicioso,', price: 7.00, quantity: 0 },
+                    { cod: 'pr', image: "img/products/pr.jpg", name: 'Pain aux Raisins', description: 'Brioche com creme e uvas passas', price: 8.00, quantity: 0 },
+                    { cod: 'bch', image: "img/products/bch.jpg", name: 'Brioche Chocolat', description: 'Briochinho super macio com gotas de chocolate', price: 7.00, quantity: 0 },
+
+                    { cod: 'ct', image: "img/products/ct.jpg", name: 'Croissant Tradicional', description: 'Clássico em pura manteiga. Simples e delicioso. Ótimo com geléias!', price: 9.00, quantity: 0 },
+                    { cod: 'cpq', image: "img/products/cpq.jpg", name: 'Croissant Presunto e Queijo', description: 'Croissant recheado com queijo minas e presunto artesanal', price: 12.00, quantity: 0 },
+                    { cod: 'pc', image: "img/products/pc.jpg", name: 'Pain au Chocolat', description: 'Croissant recheado com chocolate!', price: 10.00, quantity: 0 },
+                    { cod: 'cm', image: "img/products/cm.jpg", name: 'Mini Croissant', description: 'Delicioso mini croissant com calda doce', price: 5.00, quantity: 0 },
+                    { cod: 'sa', image: "img/products/sa.jpg", name: 'Sacristain', description: 'Palitinhos de Croissant', price: 4.00, quantity: 0 },
+                    { cod: 'cn', image: "img/products/cn.jpg", name: 'Chausson aux Pommes', description: 'Clássico folhado em pura manteiga, com recheio da casa de maçã & canela', price: 12.00, quantity: 0 },
+                    { cod: 'bh', image: "img/products/bh.jpg", name: 'Bichon au Citron', description: 'Folhado com creme de limão', price: 12.00, quantity: 0 },
+
                     // { cod: '', image: "https://placehold.co/50?text=:)&font=lora", name: '', description: '', price: 0.00, quantity: 0 },
                 ],
                 basket: [],
