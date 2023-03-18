@@ -119,9 +119,9 @@
                             </div>
 
                             <div class="h-8 flex flex-row items-center justify-between pb-1">
-                                <p class="leading-none font-light"><span
-                                        x-text="currencyFormatter(product.price)">0,00</span>
-                                </p>
+                                    <p class="leading-none font-light">R$ <span
+                                            x-text="product.price.toFixed(2)"></span>
+                                    </p>
                                 <div class="flex flex-row items-center">
                                     <button @click="decrementQuantity(product)" x-show="product.quantity"
                                         class="text-3xl font-light bg-stone-200 hover:bg-stone-400 hover:text-black rounded-full h-10 w-10 pb-1">&minus;</button>
@@ -143,10 +143,10 @@
     <!-- Conteúdo da SACOLA -->
     <template x-if="basketView">
         <main class="py-24">
-            <section id="basket" class="h-screen">
+            <section id="basket" class="h-3/4">
 
                 <template x-if="!basketItemQuantity()">
-                    <div class="h-screen">
+                    <div class="h-3/4">
                         <div class="container-fluid pt-24 p-8 items-center text-center">
                             <div class="flex place-content-center py-4 text-stone-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
