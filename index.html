@@ -51,7 +51,7 @@
     <!-- Cabeçalho do CATÁLOGO -->
     <template x-if="!basketView">
         <header
-            class="top-0 z-10 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-[#fffad0] p-4 drop-shadow-md">
+            class="top-0 z-20 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-[#fffad0] p-4 drop-shadow-md">
             <div class="grid justify-self-start px-1">
 
                 <svg id="monogram" data-name="monogram" class="h-12 w-12" fill="currentColor" stroke="currentColor"
@@ -109,16 +109,19 @@
 
 
     <template x-if="basketView && basketItemQuantity()">
+        
         <header
-            class="top-0 fixed h-20 w-full flex flex-row justify-between items-center p-4 bg-[#fffad0] drop-shadow-md">
-            <h2 class="text-xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
-            <button @click="switchView" class="bg-[#88743B] text-white hover:bg-[#745e34] rounded-full py-2 px-4 flex items-center place-content-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" class="w-6 h-6">
-                    <path d="M9 13L5 9l4-4M5 9h11a4 4 0 0 1 0 8h-1" fill="none" stroke="currentColor" stroke-width="1.25"
-                        stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-                <p class="leading-tight">Continuar comprando</p>
-            </button>
+            class="top-0 fixed h-fit w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-[#fffad0] p-4 drop-shadow-md">
+            <div class="grid justify-self-start">
+                <button @click="switchView">
+                    <p class="leading-none">Fechar</p>
+                </button>
+            </div>
+            <div class="grid justify-self-center col-span-3 palce-content-center">
+                <h1 class="text-xl"><strong>Sua sacola</strong></h1>
+            </div>
+            <div class="grid justify-self-end">
+            </div>
         </header>
 
 
@@ -162,7 +165,7 @@
                 </button>
             </div>
             <div class="grid justify-self-center col-span-3">
-                <h1 class="text-2xl"><strong>Sacola vazia</strong></h1>
+                <h1 class="text-xl"><strong>Sacola vazia</strong></h1>
             </div>
             <div class="grid justify-self-end">
             </div>
@@ -227,7 +230,7 @@
     <!-- Conteúdo da SACOLA -->
     <template x-if="basketView">
         <main class="py-24">
-            <section id="basket" class="h-fit">
+            <section id="basket" class="h-fit pb-24">
 
                 <template x-if="!basketItemQuantity()">
                     <div class="h-1/2">
@@ -265,6 +268,18 @@
                     </div>
 
                 </template>
+
+                <div
+                class="h-fit w-full flex flex-row justify-between items-center -mt-8 p-4 bg-[#fffad0]">
+                <h2 class="text-xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
+                <button @click="switchView" class="bg-[#88743B] text-white hover:bg-[#745e34] rounded-full py-2 px-4 flex items-center place-content-center gap-2">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" class="w-6 h-6">
+                        <path d="M9 13L5 9l4-4M5 9h11a4 4 0 0 1 0 8h-1" fill="none" stroke="currentColor" stroke-width="1.25"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg> -->
+                    <p class="leading-tight">Continuar comprando</p>
+                </button>
+            </div>
 
                 <template x-for="item in basket" :key="item.product.cod">
                     <div class="flex gap-3 px-4 sm:px-2 sm:rounded-xl py-2">
