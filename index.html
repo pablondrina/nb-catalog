@@ -109,23 +109,43 @@
 
 
     <template x-if="basketView && basketItemQuantity()">
-        
-        <header
-            class="top-0 fixed h-fit w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-[#fffad0] p-4 drop-shadow-md">
-            <div class="grid justify-self-start">
-                <button @click="switchView">
-                    <p class="leading-none">Fechar</p>
+        <div>
+            <div
+                class="top-0 fixed h-16 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-[#fffad0] p-4 drop-shadow-md">
+                <div class="grid justify-self-start">
+                    <button @click="switchView">
+                        <!-- <p class="leading-none">Fechar</p> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 24 24" class="w-6 h-6">
+                            <path
+                                d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"
+                                fill="currentColor"></path>
+                        </svg>
+
+                    </button>
+                </div>
+                <div class="grid justify-self-center col-span-3 palce-content-center">
+                    <h1 class="text-xl font-semibold"><span x-text="basketItemQuantity"></span> <span x-text="basketItemQuantity() === 1 ? 'item' : 'itens'">Itens</span> na sacola</h1>
+                </div>
+                <div class="grid justify-self-end">
+                </div>
+            </div>
+
+            <div class="mt-16 h-fit w-full flex flex-row justify-between items-center p-4 bg-[#fffad0]">
+
+                <button @click="switchView"
+                    class="bg-[#88743B] text-white hover:bg-[#745e34] w-full rounded-full py-2 px-4 flex items-center place-content-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 24 24" class="w-6 h-6">
+                        <path d="M9 13L5 9l4-4M5 9h11a4 4 0 0 1 0 8h-1" fill="none" stroke="currentColor"
+                            stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <p class="leading-tight">Continuar comprando</p>
                 </button>
             </div>
-            <div class="grid justify-self-center col-span-3 palce-content-center">
-                <h1 class="text-xl"><strong>Sua sacola</strong></h1>
-            </div>
-            <div class="grid justify-self-end">
-            </div>
-        </header>
 
 
-        <!-- <div
+            <!-- <div
             class="top-0 z-10 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-[#fffad0] p-4 drop-shadow-md">
             <div class="grid justify-self-start">
                 <p>Começo</p>
@@ -145,13 +165,15 @@
 
 
 
-        <!-- <div class="flex flex-row justify-between items-center p-4">
+            <!-- <div class="flex flex-row justify-between items-center p-4">
                 <h2 class="text-2xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
                 <button @click="switchView"
                     class="bg-amber-100 hover:bg-stone-300 hover:text-stone-900 rounded-full py-2 px-4">
                     <p class="leading-tight">Continuar comprando</p>
                 </button>
             </div> -->
+
+        </div>
     </template>
 
 
@@ -175,7 +197,7 @@
 
     <!-- Conteúdo do CATÁLOGO -->
     <template x-if="!basketView">
-        <main class="py-20">
+        <main class="pb-20">
             <div class="w-full h-36 bg-[url('img/table.jpg')] bg-cover bg-center flex justify-center items-center">
                 <div class="flex flex-col justify-center items-center">
                 </div>
@@ -229,24 +251,23 @@
 
     <!-- Conteúdo da SACOLA -->
     <template x-if="basketView">
-        <main class="py-24">
+        <main class="pb-20">
             <section id="basket" class="h-fit pb-24">
 
                 <template x-if="!basketItemQuantity()">
                     <div class="h-1/2">
-                        <div class="container-fluid pt-24 p-8 items-center text-center">
+                        <div class="container-fluid bottom-0 fixed mb-20 p-8 items-center text-center">
                             <div class="flex place-content-center py-4 opacity-25">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1" stroke="currentColor" class="w-16 h-16">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                                    stroke="currentColor" class="w-16 h-16">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                                 </svg>
                             </div>
 
-                            <h2 class="text-2xl text-center font-semibold py-2">Adicione itens a sua sacola</h2>
-                            <p class="py-2 text-center font-thin text-stone-500">Selecione os itens do seu interesse e
-                                nos
-                                envie como uma mensagem. Use este recurso para tirar dúvidas sobre o processo de compra,
+                            <h2 class="text-xl text-center font-semibold py-2">Adicione itens a sua sacola</h2>
+                            <p class="py-2 text-sm text-center font-thin text-stone-500">Selecione os itens do seu interesse e
+                                nos envie como uma mensagem. Use este recurso para tirar dúvidas sobre o processo de compra,
                                 personalização, entrega e o que mais precisar.</p>
                         </div>
 
@@ -255,12 +276,14 @@
                             <div class="container m-auto grid justify-self-center col-span-5 w-full">
                                 <button @click="switchView"
                                     class="bg-[#88743B] text-white hover:bg-[#745e34] rounded-lg p-2 w-full flex items-center place-content-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" class="w-6 h-6">
-                                        <path d="M9 13L5 9l4-4M5 9h11a4 4 0 0 1 0 8h-1" fill="none" stroke="currentColor" stroke-width="1.25"
-                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        viewBox="0 0 24 24" class="w-6 h-6">
+                                        <path d="M9 13L5 9l4-4M5 9h11a4 4 0 0 1 0 8h-1" fill="none"
+                                            stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
                                     </svg>
                                     <p>Ver catálogo</p>
-                                   
+
                                 </button>
                             </div>
                         </footer>
@@ -269,17 +292,7 @@
 
                 </template>
 
-                <div
-                class="h-fit w-full flex flex-row justify-between items-center -mt-8 p-4 bg-[#fffad0]">
-                <h2 class="text-xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
-                <button @click="switchView" class="bg-[#88743B] text-white hover:bg-[#745e34] rounded-full py-2 px-4 flex items-center place-content-center gap-2">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" class="w-6 h-6">
-                        <path d="M9 13L5 9l4-4M5 9h11a4 4 0 0 1 0 8h-1" fill="none" stroke="currentColor" stroke-width="1.25"
-                            stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg> -->
-                    <p class="leading-tight">Continuar comprando</p>
-                </button>
-            </div>
+
 
                 <template x-for="item in basket" :key="item.product.cod">
                     <div class="flex gap-3 px-4 sm:px-2 sm:rounded-xl py-2">
@@ -328,13 +341,14 @@
         <footer
             class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-[#fffad0] p-4 drop-shadow-2xl">
             <div class="container m-auto grid justify-self-center col-span-5 w-full">
-                <button @click="switchView" class="bg-[#88743B] text-white hover:bg-[#745e34] rounded-lg p-2 w-full flex items-center place-content-center gap-2">
-                    
+                <button @click="switchView"
+                    class="bg-[#88743B] text-white hover:bg-[#745e34] rounded-lg p-2 w-full flex items-center place-content-center gap-2">
+
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.25"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                </svg>
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                    </svg>
                     <p>Ver sacola</p>
                 </button>
             </div>
