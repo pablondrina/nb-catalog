@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html lang="pt_BR" class="font-[Lora] text-lg text-stone-700 bg-amber-50">
+<html lang="pt_BR" class="font-[Lora] text-lg text-stone-700 bg-yellow-50">
 
 <head>
     <meta charset="utf-8">
@@ -51,7 +51,7 @@
     <!-- Cabeçalho do CATÁLOGO -->
     <template x-if="!basketView">
         <header
-            class="top-0 z-10 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-amber-50 p-4 drop-shadow-md">
+            class="top-0 z-10 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-yellow-50 p-4 drop-shadow-md">
             <div class="grid justify-self-start px-1">
 
                 <svg id="monogram" data-name="monogram" class="h-12 w-12" fill="currentColor" stroke="currentColor"
@@ -110,12 +110,34 @@
 
     <template x-if="basketView && basketItemQuantity()">
         <header
-            class="top-0 fixed h-20 w-full flex flex-row justify-between items-center p-4 bg-amber-50 drop-shadow-md">
+            class="top-0 fixed h-20 w-full flex flex-row justify-between items-center p-4 bg-yellow-50 drop-shadow-md">
             <h2 class="text-2xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
-            <button @click="switchView" class="bg-amber-100 hover:text-stone-900 rounded-full py-2 px-4">
+            <button @click="switchView" class="bg-yellow-600 text-white hover:bg-yello-700 rounded-full py-2 px-4">
                 <p class="leading-tight">Continuar comprando</p>
             </button>
         </header>
+
+
+        <!-- <div
+            class="top-0 z-10 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-yellow-50 p-4 drop-shadow-md">
+            <div class="grid justify-self-start">
+                <p>Começo</p>
+            </div>
+
+            <div class="grid justify-self-center col-span-3">
+                <h1 class="text-2xl"><strong>Sacola</strong></h1>
+            </div>
+
+            <div class="grid justify-self-end">
+                <p>Final</p>
+            </div>
+
+        </div> -->
+
+
+
+
+
         <!-- <div class="flex flex-row justify-between items-center p-4">
                 <h2 class="text-2xl font-semibold"><span x-text="basketItemQuantity"></span> Itens</h2>
                 <button @click="switchView"
@@ -129,7 +151,7 @@
 
     <template x-if="basketView && !basketItemQuantity()">
         <header
-            class="top-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-amber-50 p-4 drop-shadow-md">
+            class="top-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-center bg-yellow-50 p-4 drop-shadow-md">
             <div class="grid justify-self-start">
                 <button @click="switchView">
                     <p class="leading-none">Fechar</p>
@@ -156,9 +178,6 @@
                 </div>
 
             </div>
-
-
-
 
             <section id="catalog" class="pt-2">
                 <template x-for="product in products" :key="product.cod">
@@ -188,10 +207,10 @@
                                 </p>
                                 <div class="flex flex-row items-center">
                                     <button @click="decrementQuantity(product)" x-show="product.quantity"
-                                        class="text-3xl font-light bg-amber-100 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&minus;</button>
+                                        class="text-3xl font-light bg-yellow-600 text-white hover:bg-yellow-700 rounded-full h-10 w-10 pb-1">&minus;</button>
                                     <p x-show="product.quantity" x-text="product.quantity" class="p-3">9</p>
                                     <button @click="incrementQuantity(product)"
-                                        class="text-3xl font-light bg-amber-100 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&plus;</button>
+                                        class="text-3xl font-light bg-yellow-600 text-white hover:bg-yellow-700 rounded-full h-10 w-10 pb-1">&plus;</button>
                                 </div>
                             </div>
                         </div>
@@ -207,7 +226,7 @@
     <!-- Conteúdo da SACOLA -->
     <template x-if="basketView">
         <main class="py-24">
-            <section id="basket" class="h-screen">
+            <section id="basket" class="h-fit">
 
                 <template x-if="!basketItemQuantity()">
                     <div class="h-1/2">
@@ -228,10 +247,10 @@
                         </div>
 
                         <footer
-                            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-amber-50 p-4 drop-shadow-2xl">
+                            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-yellow-50 p-4 drop-shadow-2xl">
                             <div class="container m-auto grid justify-self-center col-span-5 w-full">
                                 <button @click="switchView"
-                                    class="bg-amber-100 hover:text-stone-900 rounded-lg p-2 w-full">
+                                    class="bg-yellow-600 text-white hover:bg-yellow-700 rounded-lg p-2 w-full">
                                     Ver catálogo
                                 </button>
                             </div>
@@ -261,10 +280,10 @@
                                 <div class="h-8 flex flex-row items-center">
                                     <button @click="decrementQuantity(item.product)"
                                         x-bind:disabled="item.product.quantity === 0"
-                                        class="text-3xl font-light bg-amber-100 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&minus;</button>
+                                        class="text-3xl font-light bg-yellow-600 text-white hover:bg-yellow-700 rounded-full h-10 w-10 pb-1">&minus;</button>
                                     <p x-text="item.product.quantity" class="p-3">9</p>
                                     <button @click="incrementQuantity(item.product)"
-                                        class="text-3xl font-light bg-amber-100 hover:text-stone-900 rounded-full h-10 w-10 pb-1">&plus;</button>
+                                        class="text-3xl font-light bg-yellow-600 text-white hover:bg-yellow-700 rounded-full h-10 w-10 pb-1">&plus;</button>
                                 </div>
 
                                 <div class="h-8 flex flex-row items-center justify-end pb-1">
@@ -286,9 +305,9 @@
     <!-- Rodapé do CATÁLOGO, com botão VER SACOLA -->
     <template x-if="!basketView && basketItemQuantity()">
         <footer
-            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-amber-50 p-4 drop-shadow-2xl">
+            class="bottom-0 fixed h-20 w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-yellow-50 p-4 drop-shadow-2xl">
             <div class="container m-auto grid justify-self-center col-span-5 w-full">
-                <button @click="switchView" class="bg-amber-100 hover:text-stone-900 rounded-lg p-2 w-full">
+                <button @click="switchView" class="bg-yellow-600 text-white hover:bg-yellow-700 rounded-lg p-2 w-full">
                     Ver sacola
                 </button>
             </div>
@@ -299,7 +318,7 @@
     <!-- Rodapé da SACOLA, com subtotal e botão ENVIAR PEDIDO -->
     <template x-if="basketView && basketItemQuantity()">
         <footer
-            class="bottom-0 fixed h-auto w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-amber-50 p-4 drop-shadow-2xl">
+            class="bottom-0 fixed h-auto w-full grid grid-row-1 grid-cols-5 gap-2 items-end bg-yellow-50 p-4 drop-shadow-2xl">
             <div class="grid justify-self-center text-center col-span-5 w-full">
                 <div class="pb-4">
                     <div class="flex flex-row justify-between items-center py-2">
